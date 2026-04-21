@@ -23,9 +23,9 @@
 .
 ├── README.md
 ├── paper/
-│   ├── main.tex
+│   ├── preprint.tex
 │   ├── references.bib
-│   └── main.pdf
+│   └── preprint.pdf
 └── proof_artifacts/
     ├── README.md
     ├── A1_cross_rule_count/
@@ -42,9 +42,9 @@
 
 Current paper source and compiled PDF.
 
-- `main.tex` — current preprint source.
+- `preprint.tex` — current preprint source.
 - `references.bib` — bibliography.
-- `main.pdf` — compiled preprint.
+- `preprint.pdf` — compiled preprint.
 
 ### `proof_artifacts/`
 
@@ -59,4 +59,4 @@ Finite verification scripts together with their generated CSV/TXT outputs.
 
 ## Reproducibility
 
-The repository includes both the verification scripts and the generated finite artifacts used in the current release. The paper source is in `paper/main.tex`, and `paper/main.pdf` is the corresponding compiled version.
+The repository includes both the verification scripts and the generated finite artifacts used in the current release. The paper source is in `paper/preprint.tex`, and `paper/preprint.pdf` is the corresponding compiled version.
