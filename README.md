@@ -15,6 +15,10 @@ frozen provenance/reference packages. If wording in a layer note differs from
 the current manuscript, use `paper/main.tex` and `SUPPORT_INDEX.txt` as
 authoritative.
 
+Legacy alias: older support artifacts and some frozen `L1/`, `L2/`, and `L3/`
+notes use `PAB` for the selected right-row projection magma now denoted `RP` in
+the manuscript.
+
 ## Repository layout
 
 ```text
@@ -102,15 +106,23 @@ These commands audit the `L1/L2/L3` layers.
 
 The global hidden-continuation theorem is supported by `mathcal_H/`.
 
-Focused `mathcal_H` audits can also be run from inside `mathcal_H/`:
+The default artifact audit uses the accepted H1/H3/H4 raw artifacts and the
+light H2 coverage/consistency check:
 
 ```bash
 cd mathcal_H
 PYTHONDONTWRITEBYTECODE=1 python3 verify_mathcal_H_bundle.py --only-h1
-PYTHONDONTWRITEBYTECODE=1 python3 verify_mathcal_H_bundle.py --only-h2
+PYTHONDONTWRITEBYTECODE=1 python3 h2/verify_h2_coverage_light.py
 PYTHONDONTWRITEBYTECODE=1 python3 verify_mathcal_H_bundle.py --only-h3
 PYTHONDONTWRITEBYTECODE=1 python3 verify_mathcal_H_bundle.py --only-h4
 cd ..
+```
+
+The heavier focused H2 artifact audit is also available from inside
+`mathcal_H/`:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 verify_mathcal_H_bundle.py --only-h2
 ```
 
 Accepted `mathcal_H` results:
@@ -127,7 +139,7 @@ H2 pure-frontier exclusion:
   SAT = 0, UNKNOWN = 0
   pure maximum H_tot = 7020
 
-H3 PAB/row-complement witness check:
+H3 RP/row-complement witness check:
   rawH = 1170, H_tot = 7020, N_- = 0
 
 H4 signed-cancellation classification:
@@ -239,6 +251,6 @@ all other repository files  MIT
 The manuscript files in `paper/`, including `paper/main.tex` and
 `paper/main.pdf`, are licensed under CC BY 4.0; see `paper/LICENSE.md`.
 
-All other repository files, including verifier scripts, repository tools,
-finite tables, certificate artifacts, support documentation, and verification
-logs, are licensed under the MIT License; see `LICENSE`.
+All other repository files, including verifier scripts, finite tables,
+certificate artifacts, and support documentation, are licensed under the MIT
+License; see `LICENSE`.

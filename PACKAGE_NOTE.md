@@ -1,9 +1,11 @@
 # Package note
 
-This repository is a self-contained support package for the current PAB
-preprint. It is organized to keep the mathematical manuscript, finite reference
-layers, hidden-continuation support, verification logs, and integrity manifest
-separate.
+This repository is a self-contained support package for the current RP
+preprint. It is organized to keep the mathematical manuscript, frozen finite
+reference layers, and hidden-continuation support separate.
+
+Legacy alias: older support artifacts may use `PAB` for the selected right-row
+projection magma now denoted `RP` in the manuscript.
 
 ## Canonical source
 
@@ -35,9 +37,9 @@ all other repository files  MIT
 The manuscript files in `paper/`, including `paper/main.tex` and
 `paper/main.pdf`, are licensed under CC BY 4.0; see `paper/LICENSE.md`.
 
-All other repository files, including verifier scripts, repository tools,
-finite tables, certificate artifacts, support documentation, and verification
-logs, are licensed under the MIT License; see `LICENSE`.
+All other repository files, including verifier scripts, finite tables,
+certificate artifacts, and support documentation, are licensed under the MIT
+License; see `LICENSE`.
 
 ## Repository roles
 

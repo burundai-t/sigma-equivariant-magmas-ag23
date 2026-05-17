@@ -1,5 +1,11 @@
-PAB PREPRINT SUPPORT INDEX
-==========================
+RP PREPRINT SUPPORT INDEX
+=========================
+
+Legacy alias
+------------
+Older support artifacts and some frozen L1/L2/L3 notes use PAB for the selected
+right-row projection magma. In the current manuscript this object is denoted RP.
+Thus PAB = RP as a support-package alias.
 
 Purpose
 -------
@@ -24,17 +30,18 @@ Build command:
 
 The layer notes inside L1/, L2/, and L3/ are frozen reference notes. For theorem
 wording, use paper/main.tex. For support paths and commands, use this index and
-README.md.
+README.md. Historical L2 wording that treats the global Omega' H-certificate as
+open is superseded by the separate mathcal_H/ bundle; H is still not a Layer-2
+selector dependency, since RP and row-complement share the same pure-frontier H
+profile.
 
 Repository roles
 ----------------
 L1/        finite landscape and associativity reference layer
 L2/        finite selection reference layer
-L3/        selected-PAB operator, endomorphism, bridge, term-algebra, and
+L3/        selected-RP operator, endomorphism, bridge, term-algebra, and
            companion-structure reference layer
 mathcal_H/ global hidden-continuation theorem bundle
-VERIFY_LOGS/ optional run logs
-MANIFEST.sha256 release integrity manifest
 
 License policy
 --------------
@@ -43,19 +50,34 @@ all files outside paper/        MIT License; see LICENSE
 
 Default reviewer-facing checks
 ------------------------------
+Run commands from the repository root unless a command explicitly changes
+directory.
+
 Finite L1/L2/L3 quick audit:
-  tools/run_quick_checks.sh | tee VERIFY_LOGS/quick_checks.log
+  python3 -S L1/scripts/verify_layer1_v3_final.py
+  python3 -S L2/scripts/verify_layer2_selection_final.py
+  python3 L3/scripts/verify_layer3_frontA.py
+  python3 -S L3/scripts/verify_layer3_frontB.py
+  python3 -S L3/scripts/verify_layer3_frontC.py
+  python3 -S L3/scripts/verify_layer3_frontD.py
+  python3 -S L3/scripts/verify_layer3_frontE.py
+  python3 -S L3/scripts/verify_layer3_frontF.py
+  python3 -S L3/scripts/verify_layer3_frontG.py
+  python3 -S L3/scripts/verify_layer3_frontH.py
+  python3 -S L3/scripts/verify_l3_fiber_algebra_5dim.py
 
 mathcal_H default artifact audit:
-  tools/run_mathcal_H_audit.sh | tee VERIFY_LOGS/mathcal_H_audit.log
-
-mathcal_H audit including the heavier H2 focused artifact audit:
-  tools/run_mathcal_H_audit.sh --include-h2-full | tee VERIFY_LOGS/mathcal_H_audit_with_h2_full.log
+  cd mathcal_H
+  PYTHONDONTWRITEBYTECODE=1 python3 verify_mathcal_H_bundle.py --only-h1
+  PYTHONDONTWRITEBYTECODE=1 python3 h2/verify_h2_coverage_light.py
+  PYTHONDONTWRITEBYTECODE=1 python3 verify_mathcal_H_bundle.py --only-h3
+  PYTHONDONTWRITEBYTECODE=1 python3 verify_mathcal_H_bundle.py --only-h4
+  cd ..
 
 The default mathcal_H audit uses the light H2 coverage/consistency check. It
 does not rerun the SMT solver. The focused H2 artifact audit is available via
---include-h2-full, and full recomputation commands are listed below and in
-README.md.
+`PYTHONDONTWRITEBYTECODE=1 python3 verify_mathcal_H_bundle.py --only-h2`, and
+full recomputation commands are listed below and in README.md.
 
 Layer L1: finite landscape and associativity
 --------------------------------------------
@@ -94,10 +116,10 @@ Key manuscript support:
   pure C/J survivor separation
   compact selection theorem support tables
 
-Layer L3: selected-PAB structure reference
-------------------------------------------
+Layer L3: selected-RP structure reference
+-----------------------------------------
 Role:
-  selected-PAB operator, endomorphism, bridge, term-algebra, Lie, and symplectic
+  selected-RP operator, endomorphism, bridge, term-algebra, Lie, and symplectic
   reference layer.
 
 Primary verifiers:
@@ -151,9 +173,6 @@ Role:
   global hidden-continuation theorem support. This bundle is separate from the
   frozen L1/L2/L3 layer checks.
 
-Default audit:
-  tools/run_mathcal_H_audit.sh
-
 Focused audit commands from inside mathcal_H/:
   PYTHONDONTWRITEBYTECODE=1 python3 verify_mathcal_H_bundle.py --only-h1
   PYTHONDONTWRITEBYTECODE=1 python3 verify_mathcal_H_bundle.py --only-h2
@@ -173,7 +192,7 @@ Accepted artifact locations:
 Accepted result summary:
   H1 unrestricted range: rawH in [-378,1217], H_tot in [-2268,7302]
   H2 pure frontier: certified UNSAT = 18540/18540, SAT=0, UNKNOWN=0
-  H3 PAB/row-complement: rawH=1170, H_tot=7020, N_-=0
+  H3 RP/row-complement: rawH=1170, H_tot=7020, N_-=0
   H4 spike layer: 12 points above pure frontier, all rawH=1217, N_-=3
 
 Full recomputation routes
@@ -184,32 +203,17 @@ the runner.
 
 H1 full recomputation:
   cd mathcal_H
-  PYTHONDONTWRITEBYTECODE=1 python3 h1/run_h1_evaluator.py \
-    --start-index 0 \
-    --end-index 0 \
-    --run-dir runs/h1_full \
-    --force \
-    --self-test
+  PYTHONDONTWRITEBYTECODE=1 python3 h1/run_h1_evaluator.py     --start-index 0     --end-index 0     --run-dir runs/h1_full     --force     --self-test
   cd ..
 
 H2 full pure-frontier recomputation:
   cd mathcal_H
-  PYTHONDONTWRITEBYTECODE=1 python3 h2/run_h2_frontier.py \
-    --depth 9 \
-    --start-offset 0 \
-    --end-offset 0 \
-    --run-dir runs/h2_full \
-    --force
+  PYTHONDONTWRITEBYTECODE=1 python3 h2/run_h2_frontier.py     --depth 9     --start-offset 0     --end-offset 0     --run-dir runs/h2_full     --force
   cd ..
 
 H4 full recomputation:
   cd mathcal_H
-  PYTHONDONTWRITEBYTECODE=1 python3 h4/run_h4_classifier.py \
-    --start-index 0 \
-    --end-index 0 \
-    --run-dir runs/h4_full \
-    --force \
-    --self-test
+  PYTHONDONTWRITEBYTECODE=1 python3 h4/run_h4_classifier.py     --start-index 0     --end-index 0     --run-dir runs/h4_full     --force     --self-test
   cd ..
 
 Spot recomputation routes
@@ -219,52 +223,22 @@ sanity route, not a replacement for the accepted full artifacts.
 
 H1 spot recomputation:
   cd mathcal_H
-  PYTHONDONTWRITEBYTECODE=1 python3 h1/run_h1_evaluator.py \
-    --start-index 123456 \
-    --end-index 124456 \
-    --run-dir runs/h1_segment_123456_124456 \
-    --force \
-    --self-test
+  PYTHONDONTWRITEBYTECODE=1 python3 h1/run_h1_evaluator.py     --start-index 123456     --end-index 124456     --run-dir runs/h1_segment_123456_124456     --force     --self-test
   cd ..
 
 H2 spot recomputation:
   cd mathcal_H
-  PYTHONDONTWRITEBYTECODE=1 python3 h2/run_h2_frontier.py \
-    --depth 9 \
-    --start-offset 1000 \
-    --end-offset 1100 \
-    --run-dir runs/h2_segment_1000_1100 \
-    --force
+  PYTHONDONTWRITEBYTECODE=1 python3 h2/run_h2_frontier.py     --depth 9     --start-offset 1000     --end-offset 1100     --run-dir runs/h2_segment_1000_1100     --force
   cd ..
 
 H4 spot recomputation:
   cd mathcal_H
-  PYTHONDONTWRITEBYTECODE=1 python3 h4/run_h4_classifier.py \
-    --start-index 123456 \
-    --end-index 124456 \
-    --run-dir runs/h4_segment_123456_124456 \
-    --force \
-    --self-test
+  PYTHONDONTWRITEBYTECODE=1 python3 h4/run_h4_classifier.py     --start-index 123456     --end-index 124456     --run-dir runs/h4_segment_123456_124456     --force     --self-test
   cd ..
 
-Integrity manifest
-------------------
-Release integrity manifest:
-  MANIFEST.sha256
-
-Generator:
-  tools/make_manifest.sh
-
-Verification command:
-  sha256sum -c MANIFEST.sha256
-
-The manifest excludes .git/, MANIFEST.sha256 itself, Python cache files,
-.DS_Store, and local recomputation outputs under runs/ or mathcal_H/runs/.
-
-Log handles
------------
-Current package-build/audit logs are kept under VERIFY_LOGS/. Important default
-logs include:
-  VERIFY_LOGS/paper_lualatex_step2.log
-  VERIFY_LOGS/quick_checks.log
-  VERIFY_LOGS/mathcal_H_audit.log
+Local run-output policy
+-----------------------
+Command transcripts, integrity checksums, and recomputation outputs are local
+reviewer artifacts rather than bundled release files. New recomputation outputs
+should be written under runs/ or mathcal_H/runs/ and are ignored by .gitignore
+unless intentionally promoted.
