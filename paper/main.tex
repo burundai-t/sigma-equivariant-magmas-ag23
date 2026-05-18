@@ -12,10 +12,10 @@
 \usepackage{xurl}
 \usepackage[hidelinks]{hyperref}
 \hypersetup{
-  pdftitle={Finite Row-Graded Magmas over F3: Landscape, Intrinsic Selection, and Linearization},
+  pdftitle={Finite Sigma-Equivariant Row-Graded Magmas on AG(2,3): Landscape, Intrinsic Selection, and Linearization},
   pdfauthor={Burundai Taryi},
-  pdfsubject={Finite row-graded magmas over F3},
-  pdfkeywords={finite magma, row-graded magma, finite field, associativity atlas, intrinsic selection, linearization}
+  pdfsubject={Finite sigma-equivariant row-graded magmas on AG(2,3)},
+  pdfkeywords={finite magma, row-graded magma, affine plane, AG(2,3), sigma-equivariance, finite field, associativity atlas, intrinsic selection, linearization}
 }
 \usepackage{bookmark}
 
@@ -47,7 +47,7 @@
 
 
 
-\title{Finite Row-Graded Magmas over \(\mathbb F_3\): Landscape, Intrinsic Selection, and Linearization}
+\title{Finite \(\sigma\)-Equivariant Row-Graded Magmas on \(\operatorname{AG}(2,3)\): Landscape, Intrinsic Selection, and Linearization}
 \author{Burundai Taryi\thanks{Independent researcher, \href{mailto:burundai.taryi@gmail.com}{burundai.taryi@gmail.com}.}}
 \date{}
 
@@ -57,7 +57,8 @@
 
 \begin{abstract}
 We study the finite landscape of \(\sigma\)-equivariant row-graded magmas on
-\(M=S\times S\), \(S=\mathbb F_3\), with left-row output and a fixed same-row
+\(M=S\times S\), \(S=\mathbb F_3\), equivalently the point set of
+\(\operatorname{AG}(2,3)\), with left-row output and a fixed same-row
 off-diagonal Steiner rule.  The landscape has normal form
 \[
 \Omega'\cong S^{18}\times S^3\cong S^{21},
@@ -250,8 +251,10 @@ S=\mathbb F_3,
 \qquad
 M=S\times S.
 \]
-All arithmetic in row and column coordinates is in \(S\).  For
-\(x=(r,c)\in M\), write
+All arithmetic in row and column coordinates is in \(S\).  Equivalently,
+\(M=\mathbb F_3^2\) is the point set of the affine plane
+\(\operatorname{AG}(2,3)\), with the chosen row--column coordinates fixed
+throughout.  For \(x=(r,c)\in M\), write
 \[
 \operatorname{row}(x)=r,
 \qquad
@@ -266,6 +269,15 @@ be the row fiber.  We use the cyclic shift
 \sigma(r,c)=(r+1,c+1).
 \]
 Thus \(\sigma\) translates rows and columns simultaneously.
+
+The row-relative offset \(c-r\) is invariant under \(\sigma\).  Hence \(M\)
+decomposes into the three \(\sigma\)-orbits
+\[
+D_i=\{(r,r+i):r\in S\},
+\qquad i\in S.
+\]
+The orbit \(D_0\) is the diagonal orbit, while \(D_1\) and \(D_2\) are the two
+non-diagonal orbits.
 
 For distinct \(i,j\in S\), write \(\overline{ij}\) for the third element
 of \(S\setminus\{i,j\}\).  Equivalently, in \(\mathbb F_3\),
@@ -312,8 +324,10 @@ cross-row branch and on the same-point diagonal branch.
 
 \subsection{Normal coordinates}\label{normal-coordinates}
 
-It is convenient to use row-relative coordinates.  A point of row \(r\) is
-written as \((r,r+i)\), where \(i\in S\) is the column offset from the row.
+It is convenient to use row-relative coordinates adapted to this orbit
+decomposition.  A point of row \(r\) in \(D_i\) is written as \((r,r+i)\),
+where \(i\in S\) is the column offset from the row.  Thus \(i\) is the
+\(\sigma\)-orbit label.
 
 A normal coordinate is a triple
 \[
@@ -342,8 +356,9 @@ and, for \(i\ne j\),
 (r,r+i)\cdot(r,r+j)=(r,r+\overline{ij}).
 \]
 The first two arrays record the two ordered cross-row representatives
-\((0,1)\) and \((0,2)\).  The vector \(d\) records the same-point diagonal.
-The fourth formula is AX2.
+\((0,1)\) and \((0,2)\).  The vector \(d\) records the same-point branch by
+\(\sigma\)-orbit label: \(d_i\) is the output offset of \(x^2\) for
+\(x\in D_i\).  The fourth formula is AX2.
 
 Conversely, any operation satisfying AX0, \(\sigma\)-equivariance, and AX2
 has a unique coordinate triple \((A,B,d)\): after applying a power of
@@ -1043,8 +1058,9 @@ H_{diag}(d)=0,
 \]
 The first predicate is hidden-column access zero.  The second is diagonal
 Shannon entropy zero.  The third fixes the row-anchor representative after
-entropy compression.  The fourth chooses the intrinsic head-row
-continuation/reversal geometry on the six directed edges.
+entropy compression; equivalently, it anchors idempotence on the diagonal
+orbit \(D_0\).  The fourth chooses the intrinsic head-row continuation/reversal
+geometry on the six directed edges.
 
 The first two predicates are information-theoretic: \(\mathcal H_{acc}\) is
 conditional mutual information and \(H_{diag}\) is Shannon entropy
@@ -1174,6 +1190,8 @@ concentrated on one symbol.  For the empirical distribution of
 
 \subsection{Row-anchor idempotence}\label{row-anchor-idempotence}
 
+The row anchors are the points of the diagonal orbit \(D_0\).
+
 \begin{proposition}[Row-anchor idempotence]
 \label{prop:10.2}
 After diagonal compression, the condition
@@ -1185,12 +1203,19 @@ selects the unique constant diagonal
 \[
 d=000.
 \]
+For this diagonal,
+\[
+(r,r+i)^2=(r,r)
+\qquad(r,i\in S),
+\]
+so the idempotent points are exactly the diagonal orbit \(D_0\).
 \end{proposition}
 
 \begin{proof}
 On the compressed diagonal sector \(d=sss\), the equation
 \((r,r)^2=(r,r)\) gives \(s=0\).  Hence the unique compressed diagonal
-compatible with row-anchor idempotence is \(000\).
+compatible with row-anchor idempotence is \(000\).  The displayed square formula
+follows by substituting \(d=000\) into the same-point branch.
 \end{proof}
 
 The first three selector predicates therefore reduce the normal-form
@@ -1211,8 +1236,12 @@ Let
 \[
 M^\times=\{(r,c)\in M:r\ne c\}
 \]
-be the six-point directed-edge set of the triangle on vertex set \(S\).  The
-point \((r,c)\) is the directed edge with tail \(r\) and head \(c\).  Define
+be the six-point directed-edge set of the triangle on vertex set \(S\).  In the
+orbit notation above,
+\[
+M^\times=D_1\sqcup D_2.
+\]
+The point \((r,c)\) is the directed edge with tail \(r\) and head \(c\).  Define
 \[
 C(r,c)=(c,\overline{rc}),
 \qquad
