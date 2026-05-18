@@ -1,4 +1,4 @@
-# Finite Row-Graded Magmas over F3: Intrinsic Selection and Linearization
+# Finite σ-Equivariant Row-Graded Magmas on AG(2, 3): Landscape, Intrinsic Selection, and Linearization
 
 This repository contains the current manuscript and the finite support package
 for the preprint.
