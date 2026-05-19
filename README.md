@@ -1,4 +1,4 @@
-# Finite σ-Equivariant Row-Graded Magmas on AG(2, 3): Landscape, Intrinsic Selection, and Linearization
+# Finite σ-Equivariant Row-Graded Magmas on AG(2, 3): Parameter Space, Intrinsic Selection, and Linearization
 
 This repository contains the current manuscript and the finite support package
 for the preprint.
@@ -6,9 +6,9 @@ for the preprint.
 The repository separates three roles:
 
 1. `paper/` contains the canonical manuscript source and compiled PDF.
-2. `L1/`, `L2/`, and `L3/` are layers for 1. finite landscape,
-   2. selection, and 3. linearization.
-3. `mathcal_H/` is the separate global hidden-continuation bundle.
+2. `L1/`, `L2/`, and `L3/` are layers for 1. Parameter Space,
+   2. Intrinsic Selection, and 3. Linearization.
+3. `mathcal_H/` is the separate path-resolved Hamming defect bundle.
 
 The current theorem statement is in `paper/main.tex`. The layer directories are
 frozen provenance/reference packages. If wording in a layer note differs from
@@ -102,9 +102,9 @@ python3 -S L3/scripts/verify_l3_fiber_algebra_5dim.py
 
 These commands audit the `L1/L2/L3` layers.
 
-## `mathcal_H` hidden-continuation bundle
+## `mathcal_H` path-resolved Hamming defect
 
-The global hidden-continuation theorem is supported by `mathcal_H/`.
+The path-resolved Hamming defect theorem is supported by `mathcal_H/`.
 
 The default artifact audit uses the accepted H1/H3/H4 raw artifacts and the
 light H2 coverage/consistency check:
