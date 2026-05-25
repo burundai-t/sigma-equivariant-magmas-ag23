@@ -254,3 +254,9 @@ The manuscript files in `paper/`, including `paper/main.tex` and
 All other repository files, including verifier scripts, finite tables,
 certificate artifacts, and support documentation, are licensed under the MIT
 License; see `LICENSE`.
+
+## **This repository accompanies** the preprint  
+**Finite σ-Equivariant Row-Graded Magmas on AG(2, 3): Parameter Space, Intrinsic Selection, and Linearization**  
+archived on Zenodo.
+
+**DOI:** [10.5281/zenodo.20373452](https://doi.org/10.5281/zenodo.20373452)
