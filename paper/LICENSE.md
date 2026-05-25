@@ -11,7 +11,7 @@ Copyright (c) 2026 Burundai Taryi / burundai-t.
 Manuscript title:
 
 ```text
-Finite Row-Graded Magmas over F_3: Intrinsic Selection and Linearization
+Finite Sigma-Equivariant Row-Graded Magmas on AG(2,3): Parameter Space, Intrinsic Selection, and Linearization
 ```
 
 License references:
